@@ -126,7 +126,6 @@ public class AuthorizationController {
                 }
             });
         }
-
         user.setRoles(roles);
         userRepository.save(user);
 
