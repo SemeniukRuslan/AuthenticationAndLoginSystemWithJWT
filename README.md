@@ -1,5 +1,6 @@
 ## AuthenticationAndRegistrationSystemWithJWT
-This project provides a secure and robust user authentication, login and register system using JWT (JSON Web Tokens) in a Java web application. The project is built using Spring Boot and Spring Security.
+This project provides a secure and robust user authentication, login and register system using JWT (JSON Web Tokens) in a Java web application. 
+The project is built using Spring Boot and Spring Security.
 
 ### Technologies Used
 - Java 8
@@ -15,15 +16,16 @@ To get started with this project, you will need to have the following installed:
 
 Once you have Java and Maven installed, you can clone the repository and run the project using the following commands:
 
-- git clone https://github.com/SemeniukRuslan/AuthenticationAndLoginSystemWithJWT
-- cd AuthenticationAndLoginSystemWithJWT
+- git clone https://github.com/SemeniukRuslan/AuthenticationAndRegistrationSystemWithJWT
+- cd AuthenticationAndRegistrationSystemWithJWT
 - mvn spring-boot:run
 
 This will start the application on port 8090. You can access it by visiting http://localhost:8090 in Postman.
 
 ### Features
 This system registers and authorizes users with the help of the AuthorizationController controller.
-The next time the controller methods are accessed, the MainController requires a valid token, while checking the role of the participant, and then grants access to the appropriate content.
+The next time the controller methods are accessed, the MainController requires a valid token, while checking the role of the participant, 
+and then grants access to the appropriate content.
 
 Methods	url	actions:
 - POST	/api/auth/register - 	register new account
@@ -39,16 +41,16 @@ Before the operation registration the following conditions must be met:
 * username should be a positive length;
 * password should be a positive length;
 * email should be not empty and have a valid format;
-* role must not be empty and contain "user"or "admin"or "mod"or all together ;
+* role must not be empty and contain "user"or "admin"or "mod"or all together.
 
 Before the operation login the following conditions must be met:
 * all fields should be present;
 * username should be a positive length;
-* password should be a positive length;
+* password should be a positive length.
 
 Before accessing the resources of the main controller:
 * valid token;
-* appropriate role to the content;
+* appropriate role to the content.
 
 ### Register a new User
 To register a new user, send a POST request to the /api/auth/register endpoint with the following JSON payload:
@@ -69,7 +71,8 @@ To log in to the application, send a POST request to the /api/auth/login endpoin
       "email": "testEmail@mail.ua"
  }
 ```
-If the login is successful, you should receive a response with a JWT token in the Authorization header. This token can be used to access protected endpoints in the application.
+If the login is successful, you should receive a response with a JWT token in the Authorization header. 
+This token can be used to access protected endpoints in the application.
 ```json
 {
    "id": 1,
