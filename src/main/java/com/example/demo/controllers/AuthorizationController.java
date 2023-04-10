@@ -1,10 +1,10 @@
 package com.example.demo.controllers;
 
-import com.example.demo.payload.request.LoginRequest;
-import com.example.demo.payload.request.RegistrationRequest;
 import com.example.demo.models.EnumRole;
 import com.example.demo.models.Role;
 import com.example.demo.models.User;
+import com.example.demo.payload.request.LoginRequest;
+import com.example.demo.payload.request.RegistrationRequest;
 import com.example.demo.payload.response.JWTResponse;
 import com.example.demo.payload.response.MessageResponse;
 import com.example.demo.repository.RoleRepository;
@@ -52,7 +52,7 @@ public class AuthorizationController {
         this.jwtUtil = jwtUtil;
     }
 
-    @PostMapping("/signin")
+    @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
@@ -69,26 +69,26 @@ public class AuthorizationController {
 
         return ResponseEntity.ok(
                 new JWTResponse(
-                        jwt,
                         userDetails.getId(),
                         userDetails.getUsername(),
                         userDetails.getEmail(),
-                        roles));
+                        roles,
+                        jwt));
     }
 
-    @PostMapping("/signup")
+    @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody RegistrationRequest signUpRequest) {
 
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: Username is already taken!"));
+                    .body(new MessageResponse("Error: Username is already use!"));
         }
 
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: Email is already in use!"));
+                    .body(new MessageResponse("Error: Email is already use!"));
         }
 
         // Create new user's account
@@ -126,6 +126,7 @@ public class AuthorizationController {
                 }
             });
         }
+
         user.setRoles(roles);
         userRepository.save(user);
 
