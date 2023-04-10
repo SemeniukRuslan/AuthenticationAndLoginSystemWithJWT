@@ -28,7 +28,7 @@ The next time the controller methods are accessed, the MainController requires a
 and then grants access to the appropriate content.
 
 Methods	url	actions:
-- POST	/api/auth/register - 	register new account
+- POST	/api/auth/register - register new account
 - POST	/api/auth/login	- login and authentication an account
 - GET	/api/main/all - retrieve public content
 - GET	/api/main/user - access User content
