@@ -55,7 +55,5 @@ public class JWTUtil {
             log.error("JWT claims string is empty: {}", e.getMessage());
         }
         return false;
-
-
     }
 }
